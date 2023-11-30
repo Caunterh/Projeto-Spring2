@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+    <title>Alterar Contato</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 98vh;
+        }
+
+        .navbar {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            width: 98.5vw;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 25px;
+            right: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .back-button:hover {
+	   		background-color: #0056b3;
+		}
+
+    </style>
+</head>
+<body>
+	<div class="navbar">
+        Agenda de Contatos
+    </div>
+    
+    
+    <form th:action="@{/alterarContato}" th:object="${contato}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <h2>Alterar Contato</h2>
+        
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" th:field="*{nome}" required/><br/>
+        
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" th:field="*{telefone}" required/><br/>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" th:field="*{email}" required/><br/>
+        
+        <label for="adicionais">Informações adicionais:</label>
+        <input type="text" id="adicionais" name="adicionais" th:field="*{adicionais}"/><br/>
+        
+        <input type="submit" value="Salvar"/>
+    </form>
+
+    <a th:href="@{/listarContatos}">
+        <button class="back-button">Voltar</button>
+    </a>
+</body>
+</html>

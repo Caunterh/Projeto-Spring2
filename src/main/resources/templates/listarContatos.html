@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Contatos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 99vh;
+        }
+
+        .navbar {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            width: 98.5vw;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        h2 {
+            color: rgb(255, 255, 255);
+        }
+
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+        }
+
+        .button-green {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button-red {
+            background-color: #FF0000;
+            color: white;
+        }
+
+        .button:hover {
+            filter: brightness(90%);
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 25px;
+            right: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .back-button:hover {
+	   		background-color: #0056b3;
+		}
+
+        .add-button {
+            position: fixed;
+            bottom: 25px;
+            left: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .add-button:hover {
+		    background-color: #0056b3;
+		}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        Agenda de Contatos
+    </div>
+
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Adicionais</th>
+            <th>Ações</th> 
+        </tr>
+        <tr th:each="contato : ${contatos}">
+            <td th:text="${contato.nome}"></td>
+            <td th:text="${contato.telefone}"></td>
+            <td th:text="${contato.email}"></td>
+            <td th:text="${contato.adicionais}"></td>
+            <td>
+                <a th:href="@{/alterarContato/{id}(id=${contato.id})}">
+                    <button class="button button-green">Alterar</button>
+                </a>
+                <a th:href="@{/deletar/{id}(id=${contato.id})}">
+                    <button class="button button-red">Excluir</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="@{/}">
+        <button class="back-button">Voltar</button>
+    </a>
+
+    <a th:href="@{/cadastrarContato}">
+        <button class="add-button">Cadastrar Novo Contato</button>
+    </a>
+</body>
+</html>

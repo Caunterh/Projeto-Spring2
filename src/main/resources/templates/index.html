@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agenda de Contatos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 98vh;
+        }
+
+        .navbar {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            width: 98.5vw;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .button-container {
+            margin-top: 200px;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+			background-color:rgb(0, 107, 225) ;
+		}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        Agenda de Contatos
+    </div>
+
+    <div class="button-container">
+        <a class="button" href="/cadastrarContato">Cadastrar Contato</a>
+        <a class="button" href="/listarContatos">Listar Contatos</a>
+    </div>
+</body>
+</html>
